@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">DarWeather</string>
+    <string name="search">Введите название города</string>
+</resources>
