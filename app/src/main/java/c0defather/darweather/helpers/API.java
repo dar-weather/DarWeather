@@ -1,6 +1,7 @@
 package c0defather.darweather.helpers;
 
 import android.support.annotation.Nullable;
+import android.util.Log;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -90,7 +91,11 @@ public class API {
         if (!body.has("cod") || body.getInt("cod") != 200) {
             return city;
         }
+        if (!body.getJSONObject("sys").getString("country").equals("KZ")) {
+            return city;
+        }
         double temp = body.getJSONObject("main").getDouble("temp");
+        Log.e("ASD",body.toString());
         city.setWeather(String.valueOf((int)(temp - 273.15)) + "°C");
         return city;
     }

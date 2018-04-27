@@ -106,13 +106,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    public void onResume() {
+    public void onStart() {
         super.onResume();
         installCache();
     }
     @Override
-    public void onPause() {
-        super.onPause();
+    public void onStop() {
+        super.onStop();
         try {
             CacheHelper.flushData(true);
         } catch (IOException e) {

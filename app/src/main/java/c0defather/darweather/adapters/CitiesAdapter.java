@@ -53,8 +53,8 @@ public class CitiesAdapter extends RecyclerView.Adapter<CitiesAdapter.ViewHolder
     public CitiesAdapter.ViewHolder onCreateViewHolder(ViewGroup parent,
                                                        int viewType) {
         ViewGroup viewGroup = (ViewGroup) LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.place_item, parent, false);
-        TextView tvName = viewGroup.findViewById(R.id.placeName);
+                .inflate(R.layout.city_item, parent, false);
+        TextView tvName = viewGroup.findViewById(R.id.cityName);
         TextView tvTemp = viewGroup.findViewById(R.id.temp);
         ViewHolder vh = new ViewHolder(tvName, tvTemp);
         return vh;

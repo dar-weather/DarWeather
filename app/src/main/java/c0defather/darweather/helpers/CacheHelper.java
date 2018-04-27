@@ -22,7 +22,7 @@ public class CacheHelper {
 
     //=============== Constants ===============//
 
-    private static final String FILE_PLACES = "FILE_PLACES";
+    private static final String FILE_CITIES = "FILE_CITIES";
     private static final String FILE_USER_INPUT = "FILE_USER_INPUT";
 
     //=============== Properties ===============//
@@ -72,7 +72,7 @@ public class CacheHelper {
      */
     private CacheHelper(Context context) throws IOException, ClassNotFoundException {
         this.context = context;
-        installPlaces();
+        installCities();
         installUserInput();
     }
 
@@ -81,9 +81,9 @@ public class CacheHelper {
      * @throws IOException if cache files fails.
      * @throws ClassNotFoundException if cache files violated.
      */
-    private void installPlaces() throws IOException, ClassNotFoundException {
+    private void installCities() throws IOException, ClassNotFoundException {
         File directory = context.getFilesDir();
-        File file = new File(directory, FILE_PLACES);
+        File file = new File(directory, FILE_CITIES);
         if (file.exists()){
             FileInputStream fis = new FileInputStream(file);
             ObjectInputStream ois = new ObjectInputStream(fis);
@@ -118,7 +118,7 @@ public class CacheHelper {
      * @throws IOException if cache files fail.
      */
     public static void flushData(boolean destroy) throws IOException {
-        instance.flushPlaces();
+        instance.flushCities();
         instance.flushUserInput();
         if (destroy)
             instance = null;
@@ -128,9 +128,9 @@ public class CacheHelper {
      * Flush cities data to filesystem.
      * @throws IOException if cache files fail.
      */
-    private void flushPlaces() throws IOException {
+    private void flushCities() throws IOException {
         File directory = context.getFilesDir();
-        File file = new File(directory, FILE_PLACES);
+        File file = new File(directory, FILE_CITIES);
         FileOutputStream fos = new FileOutputStream(file, false);
         ObjectOutputStream oos = new ObjectOutputStream(fos);
         oos.writeObject(map);
