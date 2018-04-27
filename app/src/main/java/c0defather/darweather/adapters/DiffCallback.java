@@ -53,7 +53,7 @@ public class DiffCallback extends DiffUtil.Callback{
      */
     @Override
     public boolean areItemsTheSame(int oldItemPosition, int newItemPosition) {
-        return oldCities.get(oldItemPosition).equals(newCities.get(newItemPosition));
+        return oldCities.get(oldItemPosition).getName().equals(newCities.get(newItemPosition).getName());
     }
 
     /**
@@ -64,22 +64,7 @@ public class DiffCallback extends DiffUtil.Callback{
      */
     @Override
     public boolean areContentsTheSame(int oldItemPosition, int newItemPosition) {
-        City oldCity = oldCities.get(oldItemPosition);
-        City newCity = newCities.get(newItemPosition);
-        if (oldCity.equals(newCity)) {
-            if (oldCity == null || newCity == null) {
-                return true;
-            }
-            if (oldCity.getWeather() == null && newCity.getWeather() == null) {
-                return true;
-            }
-            if (oldCity.getWeather() == null || newCity.getWeather() == null) {
-                return false;
-            }
-            return oldCity.getWeather().equals(newCity.getWeather());
-        } else {
-            return false;
-        }
+        return oldCities.get(oldItemPosition).equals(newCities.get(newItemPosition));
     }
 
     /**

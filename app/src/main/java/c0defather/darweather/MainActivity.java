@@ -45,7 +45,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initViews();
-        installCache();
     }
 
     /**
@@ -100,15 +99,20 @@ public class MainActivity extends AppCompatActivity {
                 editText.setText(CacheHelper.getUserInput().getValue());
             }
         } catch (IOException e) {
-            Toast.makeText(this,"Failed to instantiate cache", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,"Failed to install cache", Toast.LENGTH_SHORT).show();
         } catch (ClassNotFoundException e) {
             Toast.makeText(this,"Cache file violated", Toast.LENGTH_SHORT).show();
         }
     }
 
     @Override
-    public void onStop() {
-        super.onStop();
+    public void onResume() {
+        super.onResume();
+        installCache();
+    }
+    @Override
+    public void onPause() {
+        super.onPause();
         try {
             CacheHelper.flushData(true);
         } catch (IOException e) {
