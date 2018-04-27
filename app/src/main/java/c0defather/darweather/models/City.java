@@ -75,21 +75,6 @@ public class City implements Serializable, Comparable{
     }
 
     /**
-     * Check if instances are equal and have same content.
-     * @param o another City instance.
-     * @return true if cities are equal and have same content; otherwise, false.
-     */
-    public boolean contentsEquals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        City city = (City) o;
-
-        if (name != null ? !name.equals(city.name) : city.name != null) return false;
-        return weather != null ? weather.equals(city.weather) : city.weather == null;
-    }
-
-    /**
      * Needed for hash data structures.
      * @return hash code of City instance.
      */
